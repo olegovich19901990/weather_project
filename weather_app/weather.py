@@ -20,3 +20,7 @@ def get_forecast_five_units(lat, lon):
 def get_forecast_five(lat, lon):
     url = f"{BASE_URL_forecast}?lat={lat}&lon={lon}&appid={API_KEY}"
     return requests.get(url)
+
+def get_pollution(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}"
+    return requests.get(url)

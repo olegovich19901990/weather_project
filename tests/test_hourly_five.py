@@ -1,18 +1,26 @@
+import pytest
 from weather_app.weather import get_forecast_five
 
 #api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+@pytest.fixture
+def coordinates():
+    return (50.45, 30.52)
 
-def test_hourly_five():
-    response = get_forecast_five(50.45, 30.52)
+
+def test_hourly_five(coordinates):
+    lat, lon = coordinates
+    response = get_forecast_five(lat, lon)
     assert response.status_code == 200
     assert response.json() is not None
 
-def test_hourly_five_units():
-    response = get_forecast_five(50.45, 30.52)
+def test_hourly_five_units(coordinates):
+    lat, lon =coordinates
+    response = get_forecast_five(lat, lon)
     assert response.status_code == 200
 
-def test_hourly_five_response_content():
-    response = get_forecast_five(50.45, 30.52)
+def test_hourly_five_response_content(coordinates):
+    lat, lon = coordinates
+    response = get_forecast_five(lat, lon)
     data = response.json()
     assert 'list' in data
     assert isinstance(data['list'], list)
