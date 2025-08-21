@@ -1,6 +1,7 @@
 import pytest
 from weather_app.weather import get_forecast_five_units
 from weather_app.weather import get_pollution
+from weather_app.weather import get_forecast_five
 
 
 test_cities = [
@@ -10,7 +11,7 @@ test_cities = [
 ]
 
 @pytest.mark.parametrize("city,coordinates", test_cities)
-def test_hourly_five(coordinates):
+def test_hourly_five(city,coordinates):
     lat, lon = coordinates
     response = get_forecast_five(lat, lon)
     assert response.status_code == 200, f"Failed for {city}"
