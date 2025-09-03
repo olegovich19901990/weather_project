@@ -1,6 +1,21 @@
 import pytest
+import logging
+import time
 from weather_app.weather import get_forecast_five
 
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("test_log.log", mode="w", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+
+logger = logging.getLogger(__name__)
 #api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 @pytest.fixture
 def coordinates():
@@ -8,20 +23,32 @@ def coordinates():
 
 
 def test_hourly_five(coordinates):
+    start = time.perf_counter()
     lat, lon = coordinates
+    logger.info(f"Testing hourly five for ({lat}, {lon})")
     response = get_forecast_five(lat, lon)
+    duration = (time.perf_counter() - start) * 1000
+    logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     assert response.status_code == 200
     assert response.json() is not None
 
 def test_hourly_five_units(coordinates):
+    start = time.perf_counter()
     lat, lon =coordinates
+    logger.info(f"Testing hourly five for ({lat}, {lon})")
     response = get_forecast_five(lat, lon)
+    duration = (time.perf_counter() - start) * 1000
+    logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     assert response.status_code == 200
 
 def test_hourly_five_response_content(coordinates):
+    start = time.perf_counter()
     lat, lon = coordinates
+    logger.info(f"Testing hourly five for ({lat}, {lon})")
     response = get_forecast_five(lat, lon)
     data = response.json()
+    if response.status_code == 200:
+        logger.info(f"Response JSON keys: {list(response.json().keys())}")
     assert 'list' in data
     assert isinstance(data['list'], list)
     assert len(data['list']) > 0
