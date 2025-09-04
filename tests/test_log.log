@@ -1,0 +1,27 @@
+2025-09-04 10:12:27,097 [INFO] Testing pollution response content for ((50, 30))
+2025-09-04 10:12:27,238 [INFO] Responce status: 200, time: 141.73
+2025-09-04 10:12:27,239 [INFO] Full Response JSON:
+{
+  "coord": {
+    "lon": 30,
+    "lat": 50
+  },
+  "list": [
+    {
+      "main": {
+        "aqi": 2
+      },
+      "components": {
+        "co": 116.79,
+        "no": 0.21,
+        "no2": 0.85,
+        "o3": 64.29,
+        "so2": 0.32,
+        "pm2_5": 3.08,
+        "pm10": 3.68,
+        "nh3": 1.57
+      },
+      "dt": 1756969898
+    }
+  ]
+}

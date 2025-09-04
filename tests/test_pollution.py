@@ -8,7 +8,7 @@ for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.INFO,# мінімальний рівень (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.FileHandler("test_log.log", mode="w", encoding="utf-8"),
@@ -54,13 +54,13 @@ def test_pollution_response_content(coordinates):
         # logger.info(f"Response JSON keys: {list(response.json().keys())}") #виводить тільки ключі верхнього рівня
         logger.info("Full Response JSON:\n" + json.dumps(data, indent=2, ensure_ascii=False))
     assert 'list' in data
-    assert isinstance(data['list'], list)      # список объектов
-    assert len(data['list']) > 0               # список не пустой
-    item_list = data['list'][0]                # первый объект в списке
-    assert 'main' in item_list                 # объект содержит ключ 'main'
-    assert 'aqi' in item_list ['main']         # объект 'main' содержит ключ 'aqi'
-    assert 'components' in item_list           # объект содержит ключ 'components'
-    assert 'co' in item_list['components']     # объект 'components' содержит ключ 'co'
+    assert isinstance(data['list'], list)      # список об'єктів
+    assert len(data['list']) > 0               # список не пустий
+    item_list = data['list'][0]                # перший об'єкт в списку
+    assert 'main' in item_list                 # об'єкт включає ключ 'main'
+    assert 'aqi' in item_list ['main']         # об'єкт 'main' включає  ключ 'aqi'
+    assert 'components' in item_list           # об'єкт включає  ключ 'components'
+    assert 'co' in item_list['components']     # об'єкт 'components' включає  ключ 'co'
     assert 'no' in item_list['components']
     assert 'no2' in item_list['components']
     assert 'o3' in item_list['components']

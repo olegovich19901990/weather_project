@@ -52,7 +52,7 @@ def test_hourly_five_response_content(coordinates):
     data = response.json()
     if response.status_code == 200:
         #logger.info(f"Response JSON keys: {list(response.json().keys())}") #виводить тільки ключі верхнього рівня
-        logger.info("Full Response JSON:\n" + json.dumps(data, indent=2, ensure_ascii=False))
+        logger.info("Full Response JSON:\n" + json.dumps(data, indent=2, ensure_ascii=False)) # виводить весь json
     assert 'list' in data
     assert isinstance(data['list'], list)
     assert len(data['list']) > 0

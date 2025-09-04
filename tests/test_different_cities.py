@@ -7,6 +7,13 @@ from weather_app.weather import get_forecast_five
 
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
+#pytest -s -v --log-cli-level=INFO
+#або в pytest.ini (щоб завжди працювало)
+#[pytest]
+#log_cli = true
+#log_cli_level = INFO
+#log_cli_format = %(asctime)s [%(levelname)s] %(message)s
+
 
 logging.basicConfig(
     level=logging.INFO,
