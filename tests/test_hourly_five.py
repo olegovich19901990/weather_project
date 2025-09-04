@@ -1,6 +1,7 @@
 import pytest
 import logging
 import time
+import json
 from weather_app.weather import get_forecast_five
 
 for handler in logging.root.handlers[:]:
@@ -46,9 +47,12 @@ def test_hourly_five_response_content(coordinates):
     lat, lon = coordinates
     logger.info(f"Testing hourly five for ({lat}, {lon})")
     response = get_forecast_five(lat, lon)
+    duration = (time.perf_counter() - start) * 1000
+    logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     data = response.json()
     if response.status_code == 200:
-        logger.info(f"Response JSON keys: {list(response.json().keys())}")
+        #logger.info(f"Response JSON keys: {list(response.json().keys())}") #виводить тільки ключі верхнього рівня
+        logger.info("Full Response JSON:\n" + json.dumps(data, indent=2, ensure_ascii=False))
     assert 'list' in data
     assert isinstance(data['list'], list)
     assert len(data['list']) > 0
