@@ -1,6 +1,7 @@
 from weather_app.weather import get_weather
 import logging
 import time
+import json
 
 
 for handler in logging.root.handlers[:]:
@@ -17,7 +18,8 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-def test_weather_api_response_status():
+def test_weather_api_response_status(coordinates):
+    lat, lon = coordinates
     start = time.perf_counter()
     logger.info(f"Testing weather api for ({lat}, {lon})")
     response = get_weather("Kyiv")
@@ -25,7 +27,8 @@ def test_weather_api_response_status():
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     assert response.status_code == 200
 
-def test_weather_api_response_content():
+def test_weather_api_response_content(coordinates):
+    lat, lon = coordinates
     start = time.perf_counter()
     logger.info(f"Testing weather api response for ({lat}, {lon})")
     response = get_weather("Kyiv")

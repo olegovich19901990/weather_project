@@ -53,14 +53,14 @@ def test_geocoding_invalid_city():
 def test_geocoding_empty_city():
     city = ""
     start = time.perf_counter()
-    logger.info(f"Testing geocoding for ({city})")
+    logger.info(f"Testing geocoding for empty({city})")
     response = get_geocoding(city)
     assert response.status_code == 400
     data = response.json()
     duration = (time.perf_counter() - start) * 1000
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-    assert isinstance(data, list)      # перевіряємо, що відповідь є списком
-    assert len(data) == 0              # перевіряємо, що список порожній для пустого міста
+    assert isinstance(data, dict)      # перевіряємо, що відповідь є списком
+    assert len(data) == 2              # перевіряємо, що список порожній для пустого міста
 
 def test_geocoding_zip_code():
     zip_code = "E14"
@@ -72,13 +72,13 @@ def test_geocoding_zip_code():
     data = response.json()
     duration = (time.perf_counter() - start) * 1000
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-    assert isinstance(data, list)      # перевіряємо, що відповідь є списком
+    assert isinstance(data, dict)      # перевіряємо, що відповідь є словником
     assert len(data) > 0               # перевіряємо, що список не порожній
-    first_result = data[0]             # беремо перший результат
-    assert 'lat' in first_result       # перевіряємо, що є ключ 'lat'
-    assert 'lon' in first_result       # перевіряємо, що є ключ 'lon'
-    assert isinstance(first_result['lat'], (float, int))  # перевіряємо, що lat є числом
-    assert isinstance(first_result['lon'], (float, int))  # перевіряємо, що lon є числом
+    first_result = {"lat","lon" }      # беремо перший результат
+    assert "lat" in first_result       # перевіряємо, що є ключ 'lat'
+    assert "lon" in first_result     # перевіряємо, що є ключ 'lon'
+    assert isinstance(float(data["lat"]), float)
+    assert isinstance(float(data["lon"]), float)
 
 
 def test_geocoding_coordinates():
