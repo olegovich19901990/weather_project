@@ -23,18 +23,30 @@ def test_geocoding():
     start = time.perf_counter()
     logger.info(f"Testing geocoding for ({city})")
     response = get_geocoding(city)
-    assert response.status_code == 200
-    data = response.json()
-    duration = (time.perf_counter() - start) * 1000
-    logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-    assert isinstance(data, list)      # перевіряємо, що відповідь є списком
-    assert len(data) > 0               # перевіряємо, що список не порожній
-    first_result = data[0]             # беремо перший результат
-    assert 'lat' in first_result       # перевіряємо, що є ключ 'lat'
-    assert 'lon' in first_result       # перевіряємо, що є ключ 'lon'
-    assert isinstance(first_result['lat'], (float, int))  # перевіряємо, що lat є числом
-    assert isinstance(first_result['lon'], (float, int))  # перевіряємо, що lon є числом
+    
+    try:
+        assert response.status_code == 200
+        data = response.json()
+        duration = (time.perf_counter() - start) * 1000
+        logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
+        
+        assert isinstance(data, list)      # перевіряємо, що відповідь є списком
+        assert len(data) > 0               # перевіряємо, що список не порожній
+        
+        first_result = data[0]             # беремо перший результат
+        assert 'lat' in first_result       # перевіряємо, що є ключ 'lat'
+        assert 'lon' in first_result       # перевіряємо, що є ключ 'lon'
+        assert isinstance(first_result['lat'], (float, int))  # перевіряємо, що lat є числом
+        assert isinstance(first_result['lon'], (float, int))  # перевіряємо, що lon є числом
 
+        logger.info(f"Test PASSED for city: {city}")
+    
+    except AssertionError as e:
+        logger.error(f"Assertion failed: {e}")
+        raise
+    except Exception as e:
+        logger.exception(f"Unexpected error during test: {e}")
+        raise
 
 
 def test_geocoding_invalid_city():
