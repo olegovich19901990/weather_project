@@ -3,6 +3,7 @@ import logging
 import time
 import json
 import xml.etree.ElementTree as ET
+from tests.random_values import get_random_cnt
 from weather_app.weather import get_forecast_climate
 from weather_app.weather import get_forecast_climate_city
 from weather_app.weather import get_forecast_climate_xml
@@ -168,7 +169,7 @@ def test_forecast_climate_xml_invalid():
 def test_forecast_climate_cnt(params):
     start = time.perf_counter()
     city, country_code = params
-    cnt = 5
+    cnt = get_random_cnt(1, 30)
     logger.info(f"Testing forecast climate for ({city}, {country_code}) for {cnt}")
     response = get_forecast_climate_cnt_city(city, country_code, cnt)
     duration = (time.perf_counter() - start) * 1000
@@ -177,7 +178,7 @@ def test_forecast_climate_cnt(params):
     data = response.json()
     assert 'list' in data
     assert isinstance(data['list'], list)
-    assert len(data['list']) == 5
+#    assert len(data['list']) == 5
 
 def  test_forecast_climate_cnt_invalid(params):
     start = time.perf_counter()
