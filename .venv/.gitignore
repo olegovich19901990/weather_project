@@ -1,0 +1,17 @@
+Ignore a specific file
+test.log.log
+# created by virtualenv automatically
+*
+*.log
+!.gitignore
+mynextfolder1/tests
+mynextfolder2/tests
+
+# Ignore all files in the logs directory
+logs/*
+# Except for .gitignore file
+!logs/.gitignore
+
+*.env
+
+
