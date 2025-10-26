@@ -57,6 +57,8 @@ def get_forecast_climate_cnt_city(city, country_code, cnt):
     url = f"http://api.openweathermap.org/data/2.5/forecast/climate?q={city},{country_code}&appid={API_KEY}&cnt={cnt}"
     return requests.get(url)
 
+
+
 def get_forecast_climate_units(city, country_code, unit):
     #api.openweathermap.org/data/2.5/forecast/climate?q=London&units=metric
     url = f"http://api.openweathermap.org/data/2.5/forecast/climate?q={city},{country_code}&appid={API_KEY}&units={unit}"
@@ -65,4 +67,12 @@ def get_forecast_climate_units(city, country_code, unit):
 def get_forecast_climate_lang(city, country_code, lang):
     #api.openweathermap.org/data/2.5/forecast/climate?q=London&lang=ua
     url = f"http://api.openweathermap.org/data/2.5/forecast/climate?q={city},{country_code}&appid={API_KEY}&lang={lang}"
+    return requests.get(url)
+
+def get_historical_weather(lat, lon, start_unix, end_unix):
+    url = f"https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start_unix}&end={end_unix}&appid={API_KEY}"
+    return requests.get(url)
+
+def get_historical_weather_cnt(lat, lon, start_unix, cnt):
+    url = f"https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start_unix}&cnt={cnt}&appid={API_KEY}"
     return requests.get(url)
