@@ -93,19 +93,3 @@ def test_historical_weather_not_hour(coordinates):
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     assert response.status_code == 200
     assert response.json() is not None
-
-# def test_historical_weather_without_start_unix_and_end_unix(coordinates):
-#     ti = time.perf_counter()
-#     lat, lon = coordinates
-#     logger.info(f"Testing historical weather for ({lat}, {lon}) without start and end unix times")
-# #    now = int(time.time())
-# #    one_day = 86400
-# #    start_unix = now - 3 * one_day
-# #    end_unix = now - 2 * one_day
-#     response = get_historical_weather(lat, lon)
-#     duration = (time.perf_counter() - ti) * 1000
-#     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-#     assert response.status_code == 200
-#     assert response.json() is not None
-
-
