@@ -40,7 +40,7 @@ def test_statistic_year_invalid_coordinates():
     response = get_statistic_api_year(lat, lon)
     duration = (time.perf_counter() - start) * 1000
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-    assert response.status_code == 400 or response.status_code == 500
+    assert response.status_code == 400 or response.status_code == 502
 
 def test_statistic_year_response_content(coordinates):
     start = time.perf_counter()
