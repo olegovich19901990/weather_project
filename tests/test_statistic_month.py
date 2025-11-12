@@ -72,7 +72,7 @@ def test_statistic_month_invalid_month(coordinates):
     response = get_statistic_api_month(lat, lon, number_month=number_month)
     duration = (time.perf_counter() - start) * 1000
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
-    assert response.status_code == 400 or response.status_code == 500
+    assert response.status_code == 400 or response.status_code == 502
 
 def test_statistic_month_boundary_month(coordinates):
     start = time.perf_counter()
