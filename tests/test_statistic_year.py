@@ -105,4 +105,4 @@ def test_statistic_year_performance(coordinates):
     duration = (time.perf_counter() - start) * 1000
     logger.info(f"Responce status: {response.status_code}, time: {duration:.2f}")
     assert response.status_code == 200
-    assert duration < 11000  # менше 2000 мс
+    assert duration < 11000  # менше 10000 мс
