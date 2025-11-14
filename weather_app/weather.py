@@ -76,3 +76,16 @@ def get_historical_weather(lat, lon, start_unix, end_unix):
 def get_historical_weather_cnt(lat, lon, start_unix, cnt):
     url = f"https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start_unix}&cnt={cnt}&appid={API_KEY}"
     return requests.get(url)
+
+def get_statistic_api_day(lat, lon, number_month, number_day):
+    url = f"https://history.openweathermap.org/data/2.5/aggregated/day?lat={lat}&lon={lon}&month={number_month}&day={number_day}&appid={API_KEY}"
+    return requests.get(url)
+
+
+def get_statistic_api_month(lat, lon, number_month):
+    url = f"https://history.openweathermap.org/data/2.5/aggregated/month?lat={lat}&lon={lon}&month={number_month}&appid={API_KEY}"
+    return requests.get(url)
+
+def get_statistic_api_year(lat, lon):
+    url = f"https://history.openweathermap.org/data/2.5/aggregated/year?lat={lat}&lon={lon}&appid={API_KEY}"
+    return requests.get(url)
