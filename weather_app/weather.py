@@ -89,3 +89,53 @@ def get_statistic_api_month(lat, lon, number_month):
 def get_statistic_api_year(lat, lon):
     url = f"https://history.openweathermap.org/data/2.5/aggregated/year?lat={lat}&lon={lon}&appid={API_KEY}"
     return requests.get(url)
+
+def get_forecast_16_days(lat, lon, cnt):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}"
+    return requests.get(url)
+
+
+def get_forecast_16_days_xml(lat, lon, cnt):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&mode=xml"
+    return requests.get(url)
+
+
+def get_forecast_16_days_units(lat, lon, cnt, unit):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&units={unit}"
+    return requests.get(url)
+
+def get_forecast_16_days_lang(lat, lon, cnt, lang):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&lang={lang}"
+    return requests.get(url)
+
+def get_forecast_30_days(lat, lon, cnt, unit):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}"
+    return requests.get(url)
+
+def get_forecast_30_days_units(lat, lon, units):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&units={unit}"
+    return requests.get(url)
+
+def get_forecast_30_days_lang(lat, lon, cnt, lang):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&lang={lang}"
+    return requests.get(url)
+
+def get_forecast_30_days_xml(lat, lon, cnt):
+    url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&mode=xml"
+    return requests.get(url)
+
+def get_current_weather_coordinates(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+    return requests.get(url)
+
+def get_current_weather_coordinates_units(lat, lon, unit):
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units={unit}"
+    return requests.get(url)
+
+def get_current_weather_coordinates_lang(lat, lon, lang):
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&lang={lang}"
+    return requests.get(url)
+
+def get_current_weather_coordinates_xml(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&mode=xml"
+    return requests.get(url)
