@@ -108,11 +108,11 @@ def get_forecast_16_days_lang(lat, lon, cnt, lang):
     url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&lang={lang}"
     return requests.get(url)
 
-def get_forecast_30_days(lat, lon, cnt, unit):
+def get_forecast_30_days(lat, lon, cnt):
     url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}"
     return requests.get(url)
 
-def get_forecast_30_days_units(lat, lon, units):
+def get_forecast_30_days_unit(lat, lon, cnt, unit):
     url = f"http://api.openweathermap.org/data/2.5/forecast/climate?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&units={unit}"
     return requests.get(url)
 
