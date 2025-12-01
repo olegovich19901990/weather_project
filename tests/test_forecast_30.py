@@ -208,7 +208,7 @@ def test_forecast_30_days_unit(coordinates):
     lat, lon = coordinates
     cnt = get_random_cnt()
     unit = "metric"
-    logger.info(f"Testing 30-day forecast for ({lat}, {lon}) - {cnt} days with unit={unit}")
+    logger.info(f"Testing 30-day forecast for ({lat}, {lon}) - {cnt} days with units={unit}")
     response = get_forecast_30_days_unit(lat, lon, cnt, unit)
     duration = (time.perf_counter() - ti) * 1000
     logger.info(f"Response status: {response.status_code}, time: {duration:.2f}")
@@ -226,7 +226,7 @@ def test_forecast_30_days_unit(coordinates):
     lat, lon = coordinates
     cnt = get_random_cnt()
     unit = "imperial"
-    logger.info(f"Testing 30-day forecast for ({lat}, {lon}) - {cnt} days with unit={unit}")
+    logger.info(f"Testing 30-day forecast for ({lat}, {lon}) - {cnt} days with units={unit}")
     response = get_forecast_30_days_unit(lat, lon, cnt, unit)
     duration = (time.perf_counter() - ti) * 1000
     logger.info(f"Response status: {response.status_code}, time: {duration:.2f}")

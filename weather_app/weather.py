@@ -94,7 +94,6 @@ def get_forecast_16_days(lat, lon, cnt):
     url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}"
     return requests.get(url)
 
-
 def get_forecast_16_days_xml(lat, lon, cnt):
     url = f"http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API_KEY}&mode=xml"
     return requests.get(url)
@@ -138,4 +137,24 @@ def get_current_weather_coordinates_lang(lat, lon, lang):
 
 def get_current_weather_coordinates_xml(lat, lon):
     url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&mode=xml"
+    return requests.get(url)
+
+def get_forecast5(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_KEY}"
+    return requests.get(url)
+
+def get_forecast5_units(lat, lon, unit):
+    url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_KEY}&units={unit}"
+    return requests.get(url)
+
+def get_forecast5_lang(lat, lon, lang):
+    url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_KEY}&lang={lang}"
+    return requests.get(url)
+
+def get_forecast5_xml(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_KEY}&mode=xml"
+    return requests.get(url)
+
+def get_forecast5_cnt(lat, lon, cnt):
+    url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API_KEY}&cnt={cnt}"
     return requests.get(url)
