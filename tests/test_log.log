@@ -1,2 +1,2 @@
-2025-09-25 17:41:43,550 [INFO] Testing forecast climate for (Kyiv, UA) with lang es
-2025-09-25 17:41:43,736 [INFO] Responce status: 200, time: 186.34
+2025-12-01 21:06:55,933 [INFO] Testing 5-day forecast with zero cnt='0' for coordinates (50.450001, 30.523333)
+2025-12-01 21:06:56,100 [INFO] Response status: 200, time: 167.63 ms

@@ -1,4 +1,5 @@
 import pytest
+import requests
 
 from weather_app.weather import get_forecast_five
 

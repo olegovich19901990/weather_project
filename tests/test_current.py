@@ -9,9 +9,6 @@ from weather_app.weather import get_current_weather_coordinates_lang
 from weather_app.weather import get_current_weather_coordinates_xml
 
 
-
-
-
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
